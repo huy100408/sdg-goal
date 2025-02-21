@@ -18,12 +18,31 @@
         .goal {
             background: white;
             margin: 10px;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
+        }
+        .goal button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .goal button:hover {
+            background-color: #0056b3;
+        }
+        .info {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            border-top: 1px solid #ccc;
+            text-align: left;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -34,34 +53,94 @@
     </div>
 
     <script>
-        const sdgGoals = [
-            "No Poverty",
-            "Zero Hunger",
-            "Good Health and Well-being",
-            "Quality Education",
-            "Gender Equality",
-            "Clean Water and Sanitation",
-            "Affordable and Clean Energy",
-            "Decent Work and Economic Growth",
-            "Industry, Innovation, and Infrastructure",
-            "Reduced Inequality",
-            "Sustainable Cities and Communities",
-            "Responsible Consumption and Production",
-            "Climate Action",
-            "Life Below Water",
-            "Life on Land",
-            "Peace, Justice, and Strong Institutions",
-            "Partnerships for the Goals"
+        const sdgData = [
+            { 
+                title: "No Poverty", 
+                info: "End poverty in all its forms everywhere. More than 700 million people, or 10% of the world population, still live in extreme poverty today. SDG 1 aims to eradicate extreme poverty, ensure equal access to economic resources, and implement social protection systems globally."
+            },
+            { 
+                title: "Zero Hunger", 
+                info: "End hunger, achieve food security and improved nutrition, and promote sustainable agriculture. Nearly 9% of the world’s population is undernourished. SDG 2 works towards eliminating hunger by improving food production, reducing food waste, and ensuring nutritious food access."
+            },
+            { 
+                title: "Good Health and Well-being", 
+                info: "Ensure healthy lives and promote well-being for all at all ages. SDG 3 focuses on reducing maternal mortality, combating communicable diseases, ensuring universal health coverage, and addressing mental health."
+            },
+            { 
+                title: "Quality Education", 
+                info: "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all. SDG 4 aims to provide free primary and secondary education, increase literacy rates, and improve educational facilities worldwide."
+            },
+            { 
+                title: "Gender Equality", 
+                info: "Achieve gender equality and empower all women and girls. SDG 5 seeks to end discrimination, violence, and harmful practices against women, while ensuring equal opportunities in leadership and economic resources."
+            },
+            { 
+                title: "Clean Water and Sanitation", 
+                info: "Ensure availability and sustainable management of water and sanitation for all. SDG 6 promotes universal access to safe drinking water, sanitation, and hygiene while improving water quality and reducing water scarcity."
+            },
+            { 
+                title: "Affordable and Clean Energy", 
+                info: "Ensure access to affordable, reliable, sustainable, and modern energy for all. SDG 7 focuses on increasing renewable energy, improving energy efficiency, and expanding infrastructure in developing countries."
+            },
+            { 
+                title: "Decent Work and Economic Growth", 
+                info: "Promote sustained, inclusive, and sustainable economic growth, full and productive employment, and decent work for all. SDG 8 supports entrepreneurship, labor rights, and access to financial services."
+            },
+            { 
+                title: "Industry, Innovation, and Infrastructure", 
+                info: "Build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation. SDG 9 helps develop quality infrastructure and increase access to technology and markets."
+            },
+            { 
+                title: "Reduced Inequality", 
+                info: "Reduce inequality within and among countries. SDG 10 addresses income inequality, equal opportunity, and the social and economic inclusion of all people."
+            },
+            { 
+                title: "Sustainable Cities and Communities", 
+                info: "Make cities and human settlements inclusive, safe, resilient, and sustainable. SDG 11 promotes urban planning, public transport, and reducing the environmental impact of cities."
+            },
+            { 
+                title: "Responsible Consumption and Production", 
+                info: "Ensure sustainable consumption and production patterns. SDG 12 encourages waste reduction, responsible resource use, and sustainable business practices."
+            },
+            { 
+                title: "Climate Action", 
+                info: "Take urgent action to combat climate change and its impacts. SDG 13 supports disaster risk reduction, education on climate issues, and integrating climate policies into national strategies."
+            },
+            { 
+                title: "Life Below Water", 
+                info: "Conserve and sustainably use the oceans, seas, and marine resources for sustainable development. SDG 14 fights pollution, protects marine ecosystems, and regulates fishing practices."
+            },
+            { 
+                title: "Life on Land", 
+                info: "Protect, restore, and promote sustainable use of terrestrial ecosystems, manage forests, combat desertification, and halt biodiversity loss. SDG 15 supports conservation and reforestation efforts."
+            },
+            { 
+                title: "Peace, Justice, and Strong Institutions", 
+                info: "Promote peaceful and inclusive societies, provide access to justice for all, and build effective, accountable institutions. SDG 16 tackles violence, corruption, and government transparency."
+            },
+            { 
+                title: "Partnerships for the Goals", 
+                info: "Strengthen the means of implementation and revitalize the global partnership for sustainable development. SDG 17 encourages international cooperation, financial support, and technology sharing."
+            }
         ];
 
         const goalsContainer = document.getElementById("goals");
-        
-        sdgGoals.forEach((goal, index) => {
+
+        sdgData.forEach((goal, index) => {
             const goalDiv = document.createElement("div");
             goalDiv.className = "goal";
-            goalDiv.innerHTML = `<h2>Goal ${index + 1}: ${goal}</h2>`;
+            goalDiv.innerHTML = `
+                <h2>Goal ${index + 1}: ${goal.title}</h2>
+                <button onclick="toggleInfo(${index})">Learn More</button>
+                <div class="info" id="info-${index}">${goal.info}</div>
+            `;
             goalsContainer.appendChild(goalDiv);
         });
+
+        function toggleInfo(index) {
+            const infoDiv = document.getElementById(`info-${index}`);
+            infoDiv.style.display = infoDiv.style.display === "none" ? "block" : "none";
+        }
     </script>
 </body>
 </html>
