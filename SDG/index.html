@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Goals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .goal {
+            background: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>United Nations Sustainable Development Goals (SDGs)</h1>
+        <div id="goals"></div>
+    </div>
+
+    <script>
+        const sdgGoals = [
+            "No Poverty",
+            "Zero Hunger",
+            "Good Health and Well-being",
+            "Quality Education",
+            "Gender Equality",
+            "Clean Water and Sanitation",
+            "Affordable and Clean Energy",
+            "Decent Work and Economic Growth",
+            "Industry, Innovation, and Infrastructure",
+            "Reduced Inequality",
+            "Sustainable Cities and Communities",
+            "Responsible Consumption and Production",
+            "Climate Action",
+            "Life Below Water",
+            "Life on Land",
+            "Peace, Justice, and Strong Institutions",
+            "Partnerships for the Goals"
+        ];
+
+        const goalsContainer = document.getElementById("goals");
+        
+        sdgGoals.forEach((goal, index) => {
+            const goalDiv = document.createElement("div");
+            goalDiv.className = "goal";
+            goalDiv.innerHTML = `<h2>Goal ${index + 1}: ${goal}</h2>`;
+            goalsContainer.appendChild(goalDiv);
+        });
+    </script>
+</body>
+</html>
