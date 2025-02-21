@@ -155,5 +155,35 @@
             aboutSection.style.display = aboutSection.style.display === "block" ? "none" : "block";
         }
     </script>
+
+    <script>
+    function sendFeedback() {
+        const webhookURL = "YOUR_WEBHOOK_URL";  // Replace with your webhook
+
+        const feedback = prompt("Enter your feedback:");
+        if (!feedback) return;
+
+        const payload = {
+            content: `📢 **New Feedback Received**\n${feedback}`
+        };
+
+        fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) alert("Feedback sent successfully!");
+            else alert("Failed to send feedback.");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error sending feedback.");
+        });
+    }
+</script>
+
+<button onclick="sendFeedback()">Send Feedback</button>
+
 </body>
 </html>
